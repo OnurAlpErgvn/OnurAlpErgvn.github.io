@@ -3,15 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Onur Alp Ergüven — minimal portfolio"/>
   <title>Onur Alp Ergüven | Portfolio</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
+
 <body>
+  <!-- HERO -->
   <header class="hero">
+    <div class="hero-bg"></div>
     <div class="watermark">ONUR ALP</div>
 
     <nav class="nav">
       <a class="brand" href="#">OnurAlpErgvn</a>
+
       <div class="nav-links">
         <a href="#projects">Projects</a>
         <a href="#pjatk">PJATK</a>
@@ -21,9 +26,11 @@
     </nav>
 
     <div class="hero-content">
-      <h1>Always curious, always learning.</h1>
+      <h1>Always curious,<br/>always learning.</h1>
+
       <p class="subtitle">
-        Computer Engineering Student focused on clean and practical software.
+        I’m <strong>Onur Alp Ergüven</strong>, a Computer Engineering student.
+        I build clean, practical projects in <strong>C++</strong>, <strong>Java</strong> and <strong>SQL</strong>.
       </p>
 
       <div class="meta">
@@ -35,79 +42,257 @@
       </div>
 
       <div class="cta">
-        <a class="btn" href="https://github.com/OnurAlpErgvn" target="_blank">GitHub</a>
+        <a class="btn" href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">GitHub</a>
         <a class="btn ghost" href="#" data-coming-soon="true">LinkedIn</a>
         <a class="btn ghost" href="#" data-coming-soon="true">Resume</a>
       </div>
+
+      <p class="location">Located in <strong>Warsaw, Poland</strong></p>
     </div>
   </header>
 
   <main class="container">
+
+    <!-- PROJECTS -->
     <section id="projects" class="section">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="thumb"></div>
+      <div class="section-head">
+        <div>
+          <h2>Projects</h2>
+          <p>Selected work — focused on fundamentals, structure, and clarity.</p>
+        </div>
+
+        <div class="controls">
+          <button class="icon-btn" id="prev" aria-label="Previous">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button class="icon-btn" id="next" aria-label="Next">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="carousel" id="carousel" tabindex="0" aria-label="Project list">
+        <!-- Card 1 -->
+        <article class="card">
+          <div class="thumb t1" aria-hidden="true"></div>
           <div class="card-body">
+            <div class="tag">C++ · SFML</div>
             <h3>MonkeyTyper</h3>
-            <p>C++ typing game project.</p>
-            <a href="#" data-coming-soon="true">View repo</a>
+            <p>
+              Typing game with difficulty, timer, scoring and file-based high scores.
+            </p>
+            <div class="card-links">
+              <a href="#" data-coming-soon="true">View repo</a>
+              <span class="dot">•</span>
+              <a href="#" data-coming-soon="true">Screens</a>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="card">
-          <div class="thumb"></div>
+        <!-- Card 2 -->
+        <article class="card">
+          <div class="thumb t2" aria-hidden="true"></div>
           <div class="card-body">
+            <div class="tag">Java · Swing</div>
             <h3>Pacman</h3>
-            <p>Java Swing Pacman game.</p>
-            <a href="#" data-coming-soon="true">View repo</a>
+            <p>
+              Swing-only Pacman with menu, board selection, upgrades, and thread-based animation.
+            </p>
+            <div class="card-links">
+              <a href="#" data-coming-soon="true">View repo</a>
+              <span class="dot">•</span>
+              <a href="#" data-coming-soon="true">Screens</a>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="card">
-          <div class="thumb"></div>
+        <!-- Card 3 -->
+        <article class="card">
+          <div class="thumb t3" aria-hidden="true"></div>
           <div class="card-body">
+            <div class="tag">SQL · Database</div>
             <h3>CarBorrowing</h3>
-            <p>SQL database project.</p>
-            <a href="#" data-coming-soon="true">View repo</a>
+            <p>
+              Schema design & queries for a car borrowing system — constraints, reports, integrity.
+            </p>
+            <div class="card-links">
+              <a href="#" data-coming-soon="true">View repo</a>
+              <span class="dot">•</span>
+              <a href="#" data-coming-soon="true">ERD / Docs</a>
+            </div>
           </div>
-        </div>
+        </article>
+
+        <!-- Card 4 (bonus, our style) -->
+        <article class="card">
+          <div class="thumb t4" aria-hidden="true"></div>
+          <div class="card-body">
+            <div class="tag">Collection</div>
+            <h3>PJATK Hub</h3>
+            <p>
+              Coursework, labs and smaller assignments — organized by subject and semester.
+            </p>
+            <div class="card-links">
+              <a href="#pjatk">Open section</a>
+              <span class="dot">•</span>
+              <a href="#" data-coming-soon="true">Repository</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="hint">
+        Tip: You can scroll horizontally, or use the arrows.
       </div>
     </section>
 
+    <!-- PJATK -->
     <section id="pjatk" class="section">
-      <h2>PJATK</h2>
-      <p>General university projects.</p>
-      <a href="#" data-coming-soon="true">Coming soon</a>
+      <div class="section-head">
+        <div>
+          <h2>PJATK</h2>
+          <p>General university projects — clean structure, short notes, and consistent naming.</p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <article class="card compact">
+          <div class="card-body">
+            <div class="tag">University</div>
+            <h3>Projects</h3>
+            <p>All PJATK work in one place. Repos will be added gradually.</p>
+            <div class="card-links">
+              <a href="#" data-coming-soon="true">Coming soon</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card compact">
+          <div class="card-body">
+            <div class="tag">Notes</div>
+            <h3>Documentation</h3>
+            <p>Small write-ups and diagrams for quick understanding.</p>
+            <div class="card-links">
+              <a href="#" data-coming-soon="true">Coming soon</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
+    <!-- ACUN -->
     <section id="acun" class="section">
-      <h2>AcunMedyaAkademi</h2>
-      <a href="https://github.com/OnurAlpErgvn/AcunMedyaAkademi" target="_blank">View repository</a>
+      <div class="section-head">
+        <div>
+          <h2>AcunMedyaAkademi</h2>
+          <p>Program work — Java exercises and projects, structured and presentable.</p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <article class="card compact">
+          <div class="card-body">
+            <div class="tag">Java</div>
+            <h3>Repository</h3>
+            <p>Exercises and projects from the program.</p>
+            <div class="card-links">
+              <a href="https://github.com/OnurAlpErgvn/AcunMedyaAkademi" target="_blank" rel="noreferrer">Open repo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card compact">
+          <div class="card-body">
+            <div class="tag">Highlights</div>
+            <h3>Best work</h3>
+            <p>A short selection of the most meaningful parts (will be curated).</p>
+            <div class="card-links">
+              <a href="#" data-coming-soon="true">Coming soon</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Email: yourmail@example.com</p>
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Simple ways to reach me.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="contact-row">
+          <span class="label">GitHub</span>
+          <a href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">github.com/OnurAlpErgvn</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Email</span>
+          <a href="mailto:yourmail@example.com">yourmail@example.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">LinkedIn</span>
+          <a href="#" data-coming-soon="true">Coming soon</a>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>© <span id="y"></span> Onur Alp Ergüven</span>
+        <span class="sep">—</span>
+        <span>Minimal, monochrome, clean.</span>
+      </footer>
     </section>
   </main>
 
-  <div id="toast" class="toast">
+  <!-- Coming Soon Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
     <div class="toast-inner">
       <div class="toast-title">Coming soon</div>
-      <div class="toast-text">This content will be available later.</div>
+      <div class="toast-text">This link will be available once the repo is ready.</div>
     </div>
   </div>
 
   <script>
+    // Year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Coming soon toast
     const toast = document.getElementById("toast");
-    document.addEventListener("click", e => {
-      const link = e.target.closest('a[data-coming-soon="true"]');
-      if (!link) return;
-      e.preventDefault();
+    let toastTimer = null;
+
+    function showToast() {
       toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2000);
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2000);
+    }
+
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest('a[data-coming-soon="true"]');
+      if (!a) return;
+      e.preventDefault();
+      showToast();
     });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toast.classList.remove("show");
+    });
+
+    // Projects carousel arrows
+    const carousel = document.getElementById("carousel");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+
+    function scrollByCard(dir) {
+      const card = carousel.querySelector(".card");
+      const gap = 18;
+      const amount = (card ? card.getBoundingClientRect().width : 320) + gap;
+      carousel.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
+
+    prev.addEventListener("click", () => scrollByCard(-1));
+    next.addEventListener("click", () => scrollByCard(1));
   </script>
 </body>
 </html>
