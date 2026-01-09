@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Onur Alp Ergüven | Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="hero">
+    <div class="watermark">ONUR ALP</div>
+
+    <nav class="nav">
+      <a class="brand" href="#">OnurAlpErgvn</a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#pjatk">PJATK</a>
+        <a href="#acun">AcunMedyaAkademi</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <h1>Always curious, always learning.</h1>
+      <p class="subtitle">
+        Computer Engineering Student focused on clean and practical software.
+      </p>
+
+      <div class="meta">
+        <span class="pill">C++</span>
+        <span class="pill">Java</span>
+        <span class="pill">SQL</span>
+        <span class="pill">Linux</span>
+        <span class="pill">Git</span>
+      </div>
+
+      <div class="cta">
+        <a class="btn" href="https://github.com/OnurAlpErgvn" target="_blank">GitHub</a>
+        <a class="btn ghost" href="#" data-coming-soon="true">LinkedIn</a>
+        <a class="btn ghost" href="#" data-coming-soon="true">Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h3>MonkeyTyper</h3>
+            <p>C++ typing game project.</p>
+            <a href="#" data-coming-soon="true">View repo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h3>Pacman</h3>
+            <p>Java Swing Pacman game.</p>
+            <a href="#" data-coming-soon="true">View repo</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb"></div>
+          <div class="card-body">
+            <h3>CarBorrowing</h3>
+            <p>SQL database project.</p>
+            <a href="#" data-coming-soon="true">View repo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pjatk" class="section">
+      <h2>PJATK</h2>
+      <p>General university projects.</p>
+      <a href="#" data-coming-soon="true">Coming soon</a>
+    </section>
+
+    <section id="acun" class="section">
+      <h2>AcunMedyaAkademi</h2>
+      <a href="https://github.com/OnurAlpErgvn/AcunMedyaAkademi" target="_blank">View repository</a>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Email: yourmail@example.com</p>
+    </section>
+  </main>
+
+  <div id="toast" class="toast">
+    <div class="toast-inner">
+      <div class="toast-title">Coming soon</div>
+      <div class="toast-text">This content will be available later.</div>
+    </div>
+  </div>
+
+  <script>
+    const toast = document.getElementById("toast");
+    document.addEventListener("click", e => {
+      const link = e.target.closest('a[data-coming-soon="true"]');
+      if (!link) return;
+      e.preventDefault();
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2000);
+    });
+  </script>
+</body>
+</html>
