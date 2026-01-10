@@ -9,10 +9,10 @@
 </head>
 
 <body>
-  <!-- HERO -->
   <div class="page-bg" aria-hidden="true"></div>
+
+  <!-- HERO -->
   <header class="hero">
-    <div class="hero-bg"></div>
     <div class="watermark">ONUR ALP</div>
 
     <nav class="nav">
@@ -232,10 +232,8 @@
   </div>
 
   <script>
-    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Coming soon toast
     const toast = document.getElementById("toast");
     let toastTimer = null;
 
@@ -256,7 +254,6 @@
       if (e.key === "Escape") toast.classList.remove("show");
     });
 
-    // Projects carousel arrows
     const carousel = document.getElementById("carousel");
     const prev = document.getElementById("prev");
     const next = document.getElementById("next");
