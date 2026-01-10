@@ -62,25 +62,19 @@
         </div>
 
         <div class="controls">
-          <button class="icon-btn" id="prev" aria-label="Previous">
-            <span aria-hidden="true">‹</span>
-          </button>
-          <button class="icon-btn" id="next" aria-label="Next">
-            <span aria-hidden="true">›</span>
-          </button>
+          <button class="icon-btn" id="prev" aria-label="Previous"><span aria-hidden="true">‹</span></button>
+          <button class="icon-btn" id="next" aria-label="Next"><span aria-hidden="true">›</span></button>
         </div>
       </div>
 
       <div class="carousel" id="carousel" tabindex="0" aria-label="Project list">
-        <!-- Card 1 -->
+        <!-- MonkeyTyper -->
         <article class="card">
           <div class="thumb t1" aria-hidden="true"></div>
           <div class="card-body">
             <div class="tag">C++ · SFML</div>
             <h3>MonkeyTyper</h3>
-            <p>
-              Typing game with difficulty, timer, scoring and file-based high scores.
-            </p>
+            <p>Typing game with difficulty, timer, scoring and file-based high scores.</p>
             <div class="card-links">
               <a href="#" data-coming-soon="true">View repo</a>
               <span class="dot">•</span>
@@ -89,15 +83,13 @@
           </div>
         </article>
 
-        <!-- Card 2 -->
+        <!-- Pacman -->
         <article class="card">
           <div class="thumb t2" aria-hidden="true"></div>
           <div class="card-body">
             <div class="tag">Java · Swing</div>
             <h3>Pacman</h3>
-            <p>
-              Swing-only Pacman with menu, board selection, upgrades, and thread-based animation.
-            </p>
+            <p>Swing-only Pacman with menu, board selection, upgrades, and thread-based animation.</p>
             <div class="card-links">
               <a href="#" data-coming-soon="true">View repo</a>
               <span class="dot">•</span>
@@ -106,15 +98,13 @@
           </div>
         </article>
 
-        <!-- Card 3 -->
+        <!-- CarBorrowing -->
         <article class="card">
           <div class="thumb t3" aria-hidden="true"></div>
           <div class="card-body">
             <div class="tag">SQL · Database</div>
             <h3>CarBorrowing</h3>
-            <p>
-              Schema design & queries for a car borrowing system — constraints, reports, integrity.
-            </p>
+            <p>Schema design & queries for a car borrowing system — constraints, reports, integrity.</p>
             <div class="card-links">
               <a href="#" data-coming-soon="true">View repo</a>
               <span class="dot">•</span>
@@ -122,7 +112,10 @@
             </div>
           </div>
         </article>
+      </div>
 
+      <div class="hint">Tip: You can scroll horizontally, or use the arrows.</div>
+    </section>
 
     <!-- PJATK -->
     <section id="pjatk" class="section">
@@ -206,13 +199,17 @@
           <span class="label">GitHub</span>
           <a href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">github.com/OnurAlpErgvn</a>
         </div>
+
         <div class="contact-row">
           <span class="label">Email</span>
           <a href="mailto:onuralperguven@gmail.com">onuralperguven@gmail.com</a>
         </div>
+
         <div class="contact-row">
           <span class="label">LinkedIn</span>
-          <a href="mailto:onuralperguven@gmail.com">onuralperguven@gmail.com</a>
+          <a href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">
+            linkedin.com/in/onur-alp-ergüven-405b12336
+          </a>
         </div>
       </div>
 
@@ -222,6 +219,7 @@
         <span>Minimal, monochrome, clean.</span>
       </footer>
     </section>
+
   </main>
 
   <!-- Coming Soon Toast -->
@@ -269,8 +267,10 @@
       carousel.scrollBy({ left: dir * amount, behavior: "smooth" });
     }
 
-    prev.addEventListener("click", () => scrollByCard(-1));
-    next.addEventListener("click", () => scrollByCard(1));
+    if (prev && next && carousel) {
+      prev.addEventListener("click", () => scrollByCard(-1));
+      next.addEventListener("click", () => scrollByCard(1));
+    }
   </script>
 </body>
 </html>
