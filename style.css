@@ -152,7 +152,6 @@ body{ background: var(--bg2); color: var(--text); }
   max-width: 1120px;
   margin: 0 auto;
   padding: 34px 18px 90px;
-  background: transparent;
 }
 .section{ margin-top: 34px; }
 .section-head{
@@ -226,14 +225,13 @@ body{ background: var(--bg2); color: var(--text); }
   scroll-snap-align: start;
 }
 .thumb{
-  height: 140px;                 /* önceki dev gri alanı küçülttüm */
+  height: 140px;
   filter: grayscale(1);
   background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05));
 }
 .thumb.t1{ background: linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.05)); }
 .thumb.t2{ background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05)); }
 .thumb.t3{ background: linear-gradient(135deg, rgba(255,255,255,0.13), rgba(255,255,255,0.05)); }
-.thumb.t4{ background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05)); }
 
 .card-body{ padding: 16px 16px 18px; }
 .tag{
@@ -256,7 +254,7 @@ body{ background: var(--bg2); color: var(--text); }
   font-size: 14px;
 }
 
-/* linkleri mavi olmaktan kurtarıyoruz */
+/* no blue links */
 .card-links{
   display:flex;
   align-items:center;
@@ -273,7 +271,7 @@ body{ background: var(--bg2); color: var(--text); }
 .card-links a:hover{ border-bottom-color: rgba(255,255,255,0.55); }
 .dot{ color: rgba(255,255,255,0.35); }
 
-/* GRID (other sections) */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
