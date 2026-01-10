@@ -9,15 +9,14 @@
 </head>
 
 <body>
-  <div class="page-bg" aria-hidden="true"></div>
 
   <!-- HERO -->
   <header class="hero">
+    <div class="hero-bg"></div>
     <div class="watermark">ONUR ALP</div>
 
     <nav class="nav">
       <a class="brand" href="#">OnurAlpErgvn</a>
-
       <div class="nav-links">
         <a href="#projects">Projects</a>
         <a href="#pjatk">PJATK</a>
@@ -43,8 +42,8 @@
       </div>
 
       <div class="cta">
-        <a class="btn" href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/OnurAlpErgvn" target="_blank">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank">LinkedIn</a>
         <a class="btn ghost" href="#" data-coming-soon="true">Resume</a>
       </div>
 
@@ -56,219 +55,77 @@
 
     <!-- PROJECTS -->
     <section id="projects" class="section">
-      <div class="section-head">
-        <div>
-          <h2>Projects</h2>
-          <p>Selected work — focused on fundamentals, structure, and clarity.</p>
-        </div>
+      <h2>Projects</h2>
+      <p class="section-desc">Selected work — focused on fundamentals, structure, and clarity.</p>
 
-        <div class="controls">
-          <button class="icon-btn" id="prev" aria-label="Previous"><span aria-hidden="true">‹</span></button>
-          <button class="icon-btn" id="next" aria-label="Next"><span aria-hidden="true">›</span></button>
-        </div>
-      </div>
+      <div class="carousel">
 
-      <div class="carousel" id="carousel" tabindex="0" aria-label="Project list">
-        <!-- MonkeyTyper -->
         <article class="card">
           <div class="thumb" style="background-image:url('assets/thumbs/monkeytyper.png')"></div>
           <div class="card-body">
             <div class="tag">C++ · SFML</div>
             <h3>MonkeyTyper</h3>
             <p>Typing game with difficulty, timer, scoring and file-based high scores.</p>
-            <div class="card-links">
-              <a href="#" data-coming-soon="true">View repo</a>
-              <span class="dot">•</span>
-              <a href="#" data-coming-soon="true">Screens</a>
-            </div>
           </div>
         </article>
 
-        <!-- Pacman -->
         <article class="card">
           <div class="thumb" style="background-image:url('assets/thumbs/pacman.png')"></div>
           <div class="card-body">
             <div class="tag">Java · Swing</div>
             <h3>Pacman</h3>
             <p>Swing-only Pacman with menu, board selection, upgrades, and thread-based animation.</p>
-            <div class="card-links">
-              <a href="#" data-coming-soon="true">View repo</a>
-              <span class="dot">•</span>
-              <a href="#" data-coming-soon="true">Screens</a>
-            </div>
           </div>
         </article>
 
-        <!-- CarBorrowing -->
         <article class="card">
           <div class="thumb" style="background-image:url('assets/thumbs/carborrowing.png')"></div>
           <div class="card-body">
             <div class="tag">SQL · Database</div>
             <h3>CarBorrowing</h3>
-            <p>Schema design & queries for a car borrowing system — constraints, reports, integrity.</p>
-            <div class="card-links">
-              <a href="#" data-coming-soon="true">View repo</a>
-              <span class="dot">•</span>
-              <a href="#" data-coming-soon="true">ERD / Docs</a>
-            </div>
+            <p>Schema design & queries for a car borrowing system.</p>
           </div>
         </article>
-      </div>
 
-      <div class="hint">Tip: You can scroll horizontally, or use the arrows.</div>
+      </div>
     </section>
 
     <!-- PJATK -->
     <section id="pjatk" class="section">
-      <div class="section-head">
-        <div>
-          <h2>PJATK</h2>
-          <p>General university projects — clean structure, short notes, and consistent naming.</p>
+      <h2>PJATK</h2>
+      <div class="card wide">
+        <div class="card-body">
+          <h3>University Projects</h3>
+          <p>All PJATK coursework and assignments. Coming soon.</p>
         </div>
-      </div>
-
-      <div class="grid two">
-        <article class="card compact">
-          <div class="card-body">
-            <div class="tag">University</div>
-            <h3>Projects</h3>
-            <p>All PJATK work in one place. Repos will be added gradually.</p>
-            <div class="card-links">
-              <a href="#" data-coming-soon="true">Coming soon</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card compact">
-          <div class="card-body">
-            <div class="tag">Notes</div>
-            <h3>Documentation</h3>
-            <p>Small write-ups and diagrams for quick understanding.</p>
-            <div class="card-links">
-              <a href="#" data-coming-soon="true">Coming soon</a>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
     <!-- ACUN -->
     <section id="acun" class="section">
-      <div class="section-head">
-        <div>
-          <h2>AcunMedyaAkademi</h2>
-          <p>Program work — Java exercises and projects, structured and presentable.</p>
+      <h2>AcunMedyaAkademi</h2>
+      <div class="card wide">
+        <div class="card-body">
+          <h3>Java Repository</h3>
+          <p>Exercises and projects from the program.</p>
+          <a class="link" href="https://github.com/OnurAlpErgvn/AcunMedyaAkademi" target="_blank">Open repo</a>
         </div>
-      </div>
-
-      <div class="grid two">
-        <article class="card compact">
-          <div class="card-body">
-            <div class="tag">Java</div>
-            <h3>Repository</h3>
-            <p>Exercises and projects from the program.</p>
-            <div class="card-links">
-              <a href="https://github.com/OnurAlpErgvn/AcunMedyaAkademi" target="_blank" rel="noreferrer">Open repo</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card compact">
-          <div class="card-body">
-            <div class="tag">Highlights</div>
-            <h3>Best work</h3>
-            <p>A short selection of the most meaningful parts (will be curated).</p>
-            <div class="card-links">
-              <a href="#" data-coming-soon="true">Coming soon</a>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="section">
-      <div class="section-head">
-        <div>
-          <h2>Contact</h2>
-          <p>Simple ways to reach me.</p>
-        </div>
-      </div>
-
-      <div class="contact">
-        <div class="contact-row">
-          <span class="label">GitHub</span>
-          <a href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">github.com/OnurAlpErgvn</a>
-        </div>
-
-        <div class="contact-row">
-          <span class="label">Email</span>
-          <a href="mailto:onuralperguven@gmail.com">onuralperguven@gmail.com</a>
-        </div>
-
-        <div class="contact-row">
-          <span class="label">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">
-            linkedin.com/in/onur-alp-ergüven-405b12336
-          </a>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <span>© <span id="y"></span> Onur Alp Ergüven</span>
-        <span class="sep">—</span>
-        <span>Minimal, monochrome, clean.</span>
-      </footer>
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:onuralperguven@gmail.com">onuralperguven@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/OnurAlpErgvn" target="_blank">github.com/OnurAlpErgvn</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank">Profile</a></p>
     </section>
+
+    <footer class="footer">
+      © 2026 Onur Alp Ergüven — Minimal, monochrome, clean.
+    </footer>
 
   </main>
 
-  <!-- Coming Soon Toast -->
-  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
-    <div class="toast-inner">
-      <div class="toast-title">Coming soon</div>
-      <div class="toast-text">This link will be available once the repo is ready.</div>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    const toast = document.getElementById("toast");
-    let toastTimer = null;
-
-    function showToast() {
-      toast.classList.add("show");
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove("show"), 2000);
-    }
-
-    document.addEventListener("click", (e) => {
-      const a = e.target.closest('a[data-coming-soon="true"]');
-      if (!a) return;
-      e.preventDefault();
-      showToast();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") toast.classList.remove("show");
-    });
-
-    const carousel = document.getElementById("carousel");
-    const prev = document.getElementById("prev");
-    const next = document.getElementById("next");
-
-    function scrollByCard(dir) {
-      const card = carousel.querySelector(".card");
-      const gap = 18;
-      const amount = (card ? card.getBoundingClientRect().width : 320) + gap;
-      carousel.scrollBy({ left: dir * amount, behavior: "smooth" });
-    }
-
-    if (prev && next && carousel) {
-      prev.addEventListener("click", () => scrollByCard(-1));
-      next.addEventListener("click", () => scrollByCard(1));
-    }
-  </script>
 </body>
 </html>
