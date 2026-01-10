@@ -1,8 +1,4 @@
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -21,8 +17,7 @@ body{
 }
 
 .hero-bg{
-  position:absolute;
-  inset:0;
+  position:absolute; inset:0;
   background:
     radial-gradient(circle at top left, #1b1b1b, transparent 60%),
     radial-gradient(circle at bottom right, #111, transparent 60%);
@@ -40,114 +35,32 @@ body{
 }
 
 /* NAV */
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.brand{
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-}
-
-.nav-links a{
-  margin-left:20px;
-  color:#aaa;
-  text-decoration:none;
-}
-
-.nav-links a:hover{
-  color:#fff;
-}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.brand{color:#fff;text-decoration:none;font-weight:600}
+.nav-links a{margin-left:20px;color:#aaa;text-decoration:none}
+.nav-links a:hover{color:#fff}
 
 /* HERO CONTENT */
-.hero-content{
-  max-width:720px;
-  margin:auto 0;
-}
+.hero-content{max-width:720px;margin:auto 0}
+.hero h1{font-size:56px;line-height:1.1;margin-bottom:20px}
+.subtitle{color:#bbb;margin-bottom:20px}
 
-.hero h1{
-  font-size:56px;
-  line-height:1.1;
-  margin-bottom:20px;
-}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.pill{border:1px solid #333;padding:6px 12px;border-radius:999px;font-size:13px;color:#ccc}
 
-.subtitle{
-  color:#bbb;
-  margin-bottom:20px;
-}
-
-.meta{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
-}
-
-.pill{
-  border:1px solid #333;
-  padding:6px 12px;
-  border-radius:999px;
-  font-size:13px;
-  color:#ccc;
-}
-
-.cta{
-  display:flex;
-  gap:12px;
-  margin-bottom:12px;
-}
-
-.btn{
-  padding:10px 16px;
-  background:#fff;
-  color:#000;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:500;
-}
-
-.btn.ghost{
-  background:transparent;
-  color:#fff;
-  border:1px solid #333;
-}
-
-.location{
-  font-size:13px;
-  color:#888;
-}
+.cta{display:flex;gap:12px;margin-bottom:12px}
+.btn{padding:10px 16px;background:#fff;color:#000;border-radius:8px;text-decoration:none;font-weight:500}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #333}
+.location{font-size:13px;color:#888}
 
 /* SECTIONS */
-.container{
-  padding:80px 32px;
-}
-
-.section{
-  max-width:1100px;
-  margin:0 auto 100px;
-}
-
-.section h2{
-  font-size:32px;
-  margin-bottom:8px;
-}
-
-.section-desc{
-  color:#888;
-  margin-bottom:24px;
-}
+.container{padding:80px 32px}
+.section{max-width:1100px;margin:0 auto 100px}
+.section h2{font-size:32px;margin-bottom:8px}
+.section-desc{color:#888;margin-bottom:24px}
 
 /* CARDS */
-.carousel{
-  display:flex;
-  gap:24px;
-  overflow-x:auto;
-  padding-bottom:10px;
-}
-
+.carousel{display:flex;gap:24px;overflow-x:auto;padding-bottom:10px}
 .card{
   min-width:300px;
   background:#111;
@@ -155,39 +68,38 @@ body{
   overflow:hidden;
   border:1px solid #222;
 }
+.card.wide{min-width:100%}
 
-.card.wide{
-  min-width:100%;
-}
-
+/* ✅ THUMB (IMG) */
 .thumb{
   height:160px;
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-color:#222;
+  background:#222;
+  position:relative;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+
+  /* premium look */
+  filter: grayscale(1) contrast(1.05) brightness(0.90);
+}
+.thumb::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.45));
+  pointer-events:none;
 }
 
-.card-body{
-  padding:20px;
-}
+.card-body{padding:20px}
+.tag{font-size:12px;color:#aaa;margin-bottom:8px}
+.card h3{margin-bottom:8px}
+.card p{font-size:14px;color:#bbb}
 
-.tag{
-  font-size:12px;
-  color:#aaa;
-  margin-bottom:8px;
-}
+.link{color:#cfcfcf;text-decoration:underline}
 
-.card h3{
-  margin-bottom:8px;
-}
-
-.card p{
-  font-size:14px;
-  color:#bbb;
-}
-
-/* FOOTER */
 .footer{
   text-align:center;
   font-size:13px;
