@@ -49,7 +49,7 @@ body.no-scroll { overflow:hidden; }
 .bg-parallax .layer{
   position:absolute;
   inset:-14%;
-  background-image: url("assets/smoke.png");
+  background-image: url("./assets/thumbs/smoke.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
