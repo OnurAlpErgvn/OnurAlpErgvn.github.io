@@ -108,6 +108,22 @@ body.no-scroll { overflow:hidden; }
   position:relative;
 }
 
+/* ---- hero subtitle split ---- */
+.subtitle{
+  max-width: 760px;
+  margin: 0 auto 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(233,233,234,.72);
+}
+
+.subtitle.secondary{
+  margin-top: 2px;
+  font-size: 14px;
+  color: rgba(233,233,234,.58);
+}
+
+
 /* Nav */
 .nav{
   max-width:1120px;
