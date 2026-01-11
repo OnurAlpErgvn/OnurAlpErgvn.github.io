@@ -9,7 +9,18 @@
 </head>
 
 <body>
-  <div class="page-bg" aria-hidden="true"></div>
+
+  <!-- PREMIUM PARALLAX BACKGROUND (smoke.png) -->
+  <div class="bg-parallax" aria-hidden="true">
+    <div class="bg-base"></div>
+
+    <div class="layer layer-1"></div>
+    <div class="layer layer-2"></div>
+    <div class="layer layer-3"></div>
+
+    <div class="grain"></div>
+    <div class="vignette"></div>
+  </div>
 
   <!-- HERO -->
   <header class="hero" id="top">
@@ -500,7 +511,6 @@
 
       const card = e.target.closest(".project");
       if (card) {
-        // if clicked on a normal link inside card (View repo etc), don't hijack
         if (e.target.closest("a")) return;
         openModal(card);
       }
@@ -565,7 +575,7 @@
       copyText(t);
     });
 
-    // ===== Mobile drawer nav (works only on mobile; desktop never locks) =====
+    // ===== Mobile drawer nav =====
     const mnav = document.getElementById("mnav");
     const mnavBtn = document.getElementById("mnavBtn");
     const mnavClose = document.getElementById("mnavClose");
@@ -574,7 +584,7 @@
     function isMobile() { return window.innerWidth <= 860; }
 
     function openMnav(){
-      if(!isMobile()) return;             // desktop: do nothing
+      if(!isMobile()) return;
       mnav.classList.add("open");
       mnav.setAttribute("aria-hidden", "false");
       mnavBtn.setAttribute("aria-expanded", "true");
@@ -592,15 +602,68 @@
     mnavClose?.addEventListener("click", closeMnav);
     mnavBackdrop?.addEventListener("click", closeMnav);
 
-    // close after clicking a menu link
     document.querySelectorAll(".mnav-link").forEach(a => {
       a.addEventListener("click", () => closeMnav());
     });
 
-    // resize safety: if desktop -> ensure unlocked
     window.addEventListener("resize", () => {
       if (!isMobile()) closeMnav();
     });
+
+    // ===== PREMIUM PARALLAX (scroll + mouse) =====
+    (() => {
+      const root = document.querySelector('.bg-parallax');
+      if (!root) return;
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      const layers = [
+        { el: root.querySelector('.layer-1'), scroll: 0.10, mouse: 10 },
+        { el: root.querySelector('.layer-2'), scroll: 0.18, mouse: 16 },
+        { el: root.querySelector('.layer-3'), scroll: 0.26, mouse: 22 },
+      ].filter(x => x.el);
+
+      const grain = root.querySelector('.grain');
+
+      let targetX = 0, targetY = 0;
+      let curX = 0, curY = 0;
+      let scrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        scrollY = window.scrollY;
+      }, { passive: true });
+
+      window.addEventListener('mousemove', (e) => {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        targetX = (e.clientX - cx) / cx;  // -1..1
+        targetY = (e.clientY - cy) / cy;  // -1..1
+      }, { passive: true });
+
+      function raf(){
+        curX += (targetX - curX) * 0.06;
+        curY += (targetY - curY) * 0.06;
+
+        layers.forEach(({el, scroll, mouse}, i) => {
+          const y = -scrollY * scroll;
+          const mx = curX * mouse;
+          const my = curY * (mouse * 0.55);
+          const s = 1.06 + i * 0.10;
+          el.style.transform = `translate3d(${mx}px, ${y + my}px, 0) scale(${s})`;
+        });
+
+        // Grain: çok hafif drift (premium film hissi)
+        if (grain) {
+          const gx = curX * 6;
+          const gy = (curY * 4) + (-scrollY * 0.02);
+          grain.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+        }
+
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    })();
   </script>
 
 </body>
