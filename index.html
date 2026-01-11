@@ -9,7 +9,6 @@
 </head>
 
 <body>
-  <!-- Global background -->
   <div class="page-bg" aria-hidden="true"></div>
 
   <!-- HERO -->
@@ -18,11 +17,12 @@
 
     <nav class="nav">
       <a class="brand" href="#top">OnurAlpErgvn</a>
+
       <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#pjatk">PJATK</a>
-        <a href="#acun">AcunMedyaAkademi</a>
-        <a href="#contact">Contact</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#pjatk">PJATK</a>
+        <a class="nav-link" href="#acun">AcunMedyaAkademi</a>
+        <a class="nav-link" href="#contact">Contact</a>
       </div>
     </nav>
 
@@ -63,6 +63,7 @@
           <h2>Projects</h2>
           <p>Selected work — focused on fundamentals, structure, and clarity.</p>
         </div>
+
         <div class="controls">
           <button class="icon-btn" id="prev" aria-label="Previous"><span aria-hidden="true">‹</span></button>
           <button class="icon-btn" id="next" aria-label="Next"><span aria-hidden="true">›</span></button>
@@ -71,9 +72,19 @@
 
       <div class="carousel" id="carousel" tabindex="0" aria-label="Project list">
 
-        <article class="card">
+        <!-- MonkeyTyper -->
+        <article class="card project"
+          data-project="monkeytyper"
+          data-title="MonkeyTyper"
+          data-tag="C++ · SFML"
+          data-thumb="assets/thumbs/monkeytyper.png"
+          data-desc="Typing game with difficulty, timer, scoring and file-based high scores."
+          data-stack="C++, SFML, OOP, File I/O"
+          data-built="Difficulty system, timer & scoring, word spawner, file-based high scores, clean structure"
+          data-learned="Game loop thinking, state management, input handling, clean separation of responsibilities"
+        >
           <div class="thumb">
-            <img src="assets/thumbs/monkeytyper.png" alt="MonkeyTyper">
+            <img src="assets/thumbs/monkeytyper.png" alt="MonkeyTyper thumbnail">
           </div>
           <div class="card-body">
             <div class="tag">C++ · SFML</div>
@@ -82,14 +93,24 @@
             <div class="card-links">
               <a href="#" data-coming-soon="true">View repo</a>
               <span class="dot">•</span>
-              <a href="#" data-coming-soon="true">Screens</a>
+              <a href="#" class="open-modal">Details</a>
             </div>
           </div>
         </article>
 
-        <article class="card">
+        <!-- Pacman -->
+        <article class="card project"
+          data-project="pacman"
+          data-title="Pacman"
+          data-tag="Java · Swing"
+          data-thumb="assets/thumbs/pacman.png"
+          data-desc="Swing-only Pacman with menu, board selection, upgrades, and thread-based animation."
+          data-stack="Java, Swing, Threads, OOP"
+          data-built="Modern menu, labyrinth & dots, upgrades, real-time score/life/timer, pause menu"
+          data-learned="Thread-based animation, game states, UI structure, event handling"
+        >
           <div class="thumb">
-            <img src="assets/thumbs/pacman.png" alt="Pacman">
+            <img src="assets/thumbs/pacman.png" alt="Pacman thumbnail">
           </div>
           <div class="card-body">
             <div class="tag">Java · Swing</div>
@@ -98,14 +119,24 @@
             <div class="card-links">
               <a href="#" data-coming-soon="true">View repo</a>
               <span class="dot">•</span>
-              <a href="#" data-coming-soon="true">Screens</a>
+              <a href="#" class="open-modal">Details</a>
             </div>
           </div>
         </article>
 
-        <article class="card">
+        <!-- CarBorrowing -->
+        <article class="card project"
+          data-project="carborrowing"
+          data-title="CarBorrowing"
+          data-tag="SQL · Database"
+          data-thumb="assets/thumbs/carborrowing.png"
+          data-desc="Schema design & queries for a car borrowing system — constraints, reports, integrity."
+          data-stack="SQL, Relational Design"
+          data-built="Schema design, constraints, reports/queries, integrity rules"
+          data-learned="Practical SQL modeling, thinking in relationships, constraints-first design"
+        >
           <div class="thumb">
-            <img src="assets/thumbs/carborrowing.png" alt="CarBorrowing">
+            <img src="assets/thumbs/carborrowing.png" alt="CarBorrowing thumbnail">
           </div>
           <div class="card-body">
             <div class="tag">SQL · Database</div>
@@ -114,7 +145,7 @@
             <div class="card-links">
               <a href="#" data-coming-soon="true">View repo</a>
               <span class="dot">•</span>
-              <a href="#" data-coming-soon="true">ERD / Docs</a>
+              <a href="#" class="open-modal">Details</a>
             </div>
           </div>
         </article>
@@ -204,19 +235,26 @@
       <div class="contact">
         <div class="contact-row">
           <span class="label">GitHub</span>
-          <a href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">github.com/OnurAlpErgvn</a>
+          <div class="contact-right">
+            <a href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">github.com/OnurAlpErgvn</a>
+            <button class="copy-btn" data-copy="https://github.com/OnurAlpErgvn" aria-label="Copy GitHub link">Copy</button>
+          </div>
         </div>
 
         <div class="contact-row">
           <span class="label">Email</span>
-          <a href="mailto:onuralperguven@gmail.com">onuralperguven@gmail.com</a>
+          <div class="contact-right">
+            <a href="mailto:onuralperguven@gmail.com">onuralperguven@gmail.com</a>
+            <button class="copy-btn" data-copy="onuralperguven@gmail.com" aria-label="Copy email">Copy</button>
+          </div>
         </div>
 
         <div class="contact-row">
           <span class="label">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">
-            linkedin.com/in/onur-alp-ergüven-405b12336
-          </a>
+          <div class="contact-right">
+            <a href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">linkedin.com/in/onur-alp-ergüven</a>
+            <button class="copy-btn" data-copy="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" aria-label="Copy LinkedIn link">Copy</button>
+          </div>
         </div>
       </div>
 
@@ -229,11 +267,54 @@
 
   </main>
 
-  <!-- Coming Soon Toast -->
+  <!-- Toast -->
   <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true">
     <div class="toast-inner">
-      <div class="toast-title">Coming soon</div>
-      <div class="toast-text">This link will be available once the repo is ready.</div>
+      <div class="toast-title" id="toastTitle">Coming soon</div>
+      <div class="toast-text" id="toastText">This link will be available once the repo is ready.</div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close="true"></div>
+
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+
+      <div class="modal-hero">
+        <img id="modalImg" src="" alt="">
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-top">
+          <div class="modal-tag" id="modalTag"></div>
+          <h3 class="modal-title" id="modalTitle"></h3>
+          <p class="modal-desc" id="modalDesc"></p>
+        </div>
+
+        <div class="modal-grid">
+          <div class="modal-box">
+            <div class="modal-label">Stack</div>
+            <div class="modal-text" id="modalStack"></div>
+          </div>
+
+          <div class="modal-box">
+            <div class="modal-label">What I built</div>
+            <div class="modal-text" id="modalBuilt"></div>
+          </div>
+
+          <div class="modal-box">
+            <div class="modal-label">What I learned</div>
+            <div class="modal-text" id="modalLearned"></div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a class="btn ghost" href="#" data-coming-soon="true">View repo</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -241,11 +322,15 @@
     // Year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Coming soon toast
+    // Toast
     const toast = document.getElementById("toast");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastText = document.getElementById("toastText");
     let toastTimer = null;
 
-    function showToast() {
+    function showToast(title, text) {
+      toastTitle.textContent = title || "Coming soon";
+      toastText.textContent = text || "This link will be available once the repo is ready.";
       toast.classList.add("show");
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => toast.classList.remove("show"), 2000);
@@ -255,11 +340,7 @@
       const a = e.target.closest('a[data-coming-soon="true"]');
       if (!a) return;
       e.preventDefault();
-      showToast();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") toast.classList.remove("show");
+      showToast("Coming soon", "This link will be available once the repo is ready.");
     });
 
     // Carousel arrows
@@ -273,11 +354,133 @@
       const amount = (card ? card.getBoundingClientRect().width : 320) + gap;
       carousel.scrollBy({ left: dir * amount, behavior: "smooth" });
     }
-
     if (prev && next && carousel) {
       prev.addEventListener("click", () => scrollByCard(-1));
       next.addEventListener("click", () => scrollByCard(1));
     }
+
+    // Modal
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modalClose");
+    const modalImg = document.getElementById("modalImg");
+    const modalTag = document.getElementById("modalTag");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalStack = document.getElementById("modalStack");
+    const modalBuilt = document.getElementById("modalBuilt");
+    const modalLearned = document.getElementById("modalLearned");
+
+    let lastFocus = null;
+
+    function openModal(projectEl) {
+      if (!projectEl) return;
+
+      lastFocus = document.activeElement;
+
+      const title = projectEl.dataset.title || "";
+      const tag = projectEl.dataset.tag || "";
+      const thumb = projectEl.dataset.thumb || "";
+      const desc = projectEl.dataset.desc || "";
+      const stack = projectEl.dataset.stack || "";
+      const built = projectEl.dataset.built || "";
+      const learned = projectEl.dataset.learned || "";
+
+      modalImg.src = thumb;
+      modalImg.alt = title + " image";
+      modalTag.textContent = tag;
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modalStack.textContent = stack;
+      modalBuilt.textContent = built;
+      modalLearned.textContent = learned;
+
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+
+      // focus close
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      if (lastFocus) lastFocus.focus();
+    }
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".open-modal");
+      if (btn) {
+        e.preventDefault();
+        const project = btn.closest(".project");
+        openModal(project);
+        return;
+      }
+
+      // click on card (optional)
+      const card = e.target.closest(".project");
+      if (card && !e.target.closest("a")) {
+        openModal(card);
+        return;
+      }
+
+      // close via backdrop
+      const closeHit = e.target.closest("[data-close='true']");
+      if (closeHit) closeModal();
+    });
+
+    modalClose.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        toast.classList.remove("show");
+        if (modal.classList.contains("show")) closeModal();
+      }
+    });
+
+    // Active nav link (IntersectionObserver)
+    const sections = document.querySelectorAll("main section[id], header#top");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function setActive(id) {
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if (!visible) return;
+      const id = visible.target.id;
+      if (id && id !== "top") setActive(id);
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: [0.1,0.2,0.3,0.4,0.5] });
+
+    sections.forEach(s => {
+      if (s.id) observer.observe(s);
+    });
+
+    // Copy buttons
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Copied", text);
+      } catch {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        showToast("Copied", text);
+      }
+    }
+
+    document.addEventListener("click", (e) => {
+      const c = e.target.closest(".copy-btn");
+      if (!c) return;
+      const t = c.getAttribute("data-copy") || "";
+      copyText(t);
+    });
   </script>
 
 </body>
