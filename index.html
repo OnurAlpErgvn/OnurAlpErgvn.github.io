@@ -18,12 +18,17 @@
     <nav class="nav">
       <a class="brand" href="#top">OnurAlpErgvn</a>
 
-      <div class="nav-links">
+      <div class="nav-links" id="desktopNav">
         <a class="nav-link" href="#projects">Projects</a>
         <a class="nav-link" href="#pjatk">PJATK</a>
         <a class="nav-link" href="#acun">AcunMedyaAkademi</a>
         <a class="nav-link" href="#contact">Contact</a>
       </div>
+
+      <!-- Mobile menu button -->
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+        <span class="menu-icon" aria-hidden="true">☰</span>
+      </button>
     </nav>
 
     <div class="hero-inner">
@@ -74,14 +79,15 @@
 
         <!-- MonkeyTyper -->
         <article class="card project"
+          data-project="monkeytyper"
           data-title="MonkeyTyper"
           data-tag="C++ · SFML"
+          data-thumb="assets/thumbs/monkeytyper.png"
           data-desc="Typing game with difficulty, timer, scoring and file-based high scores."
           data-stack="C++, SFML, OOP, File I/O"
           data-built="Difficulty system, timer & scoring, word spawner, file-based high scores, clean structure"
           data-learned="Game loop thinking, state management, input handling, clean separation of responsibilities"
           data-screens="assets/thumbs/monkeytyper.png,assets/thumbs/monkeytyper.png,assets/thumbs/monkeytyper.png"
-          data-repo="#"
         >
           <div class="thumb">
             <img src="assets/thumbs/monkeytyper.png" alt="MonkeyTyper thumbnail">
@@ -100,14 +106,15 @@
 
         <!-- Pacman -->
         <article class="card project"
+          data-project="pacman"
           data-title="Pacman"
           data-tag="Java · Swing"
+          data-thumb="assets/thumbs/pacman.png"
           data-desc="Swing-only Pacman with menu, board selection, upgrades, and thread-based animation."
           data-stack="Java, Swing, Threads, OOP"
           data-built="Modern menu, labyrinth & dots, upgrades, real-time score/life/timer, pause menu"
           data-learned="Thread-based animation, game states, UI structure, event handling"
           data-screens="assets/thumbs/pacman.png,assets/thumbs/pacman.png,assets/thumbs/pacman.png"
-          data-repo="#"
         >
           <div class="thumb">
             <img src="assets/thumbs/pacman.png" alt="Pacman thumbnail">
@@ -126,14 +133,15 @@
 
         <!-- CarBorrowing -->
         <article class="card project"
+          data-project="carborrowing"
           data-title="CarBorrowing"
           data-tag="SQL · Database"
+          data-thumb="assets/thumbs/carborrowing.png"
           data-desc="Schema design & queries for a car borrowing system — constraints, reports, integrity."
           data-stack="SQL, Relational Design"
           data-built="Schema design, constraints, reports/queries, integrity rules"
           data-learned="Practical SQL modeling, thinking in relationships, constraints-first design"
           data-screens="assets/thumbs/carborrowing.png,assets/thumbs/carborrowing.png,assets/thumbs/carborrowing.png"
-          data-repo="#"
         >
           <div class="thumb">
             <img src="assets/thumbs/carborrowing.png" alt="CarBorrowing thumbnail">
@@ -275,6 +283,29 @@
     </div>
   </div>
 
+  <!-- MOBILE NAV (Drawer) -->
+  <div class="mnav" id="mnav" aria-hidden="true">
+    <div class="mnav-backdrop" data-mnav-close="true"></div>
+    <div class="mnav-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+      <div class="mnav-top">
+        <div class="mnav-brand">OnurAlpErgvn</div>
+        <button class="mnav-close" data-mnav-close="true" aria-label="Close menu">×</button>
+      </div>
+
+      <div class="mnav-links">
+        <a href="#projects" class="mnav-link">Projects</a>
+        <a href="#pjatk" class="mnav-link">PJATK</a>
+        <a href="#acun" class="mnav-link">AcunMedyaAkademi</a>
+        <a href="#contact" class="mnav-link">Contact</a>
+      </div>
+
+      <div class="mnav-cta">
+        <a class="btn" href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL -->
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modal-backdrop" data-close="true"></div>
@@ -283,7 +314,7 @@
       <button class="modal-close" id="modalClose" aria-label="Close">×</button>
 
       <div class="modal-hero">
-        <div class="modal-slider" id="slider" aria-label="Project images">
+        <div class="modal-slider" id="slider">
           <div class="slider-track" id="sliderTrack"></div>
 
           <button class="slider-btn left" id="slidePrev" aria-label="Previous image">‹</button>
@@ -318,7 +349,7 @@
         </div>
 
         <div class="modal-actions">
-          <a class="btn ghost" id="modalRepo" href="#" data-coming-soon="true">View repo</a>
+          <a class="btn ghost" href="#" data-coming-soon="true">View repo</a>
           <a class="btn" href="#contact">Contact</a>
         </div>
       </div>
@@ -366,7 +397,7 @@
       next.addEventListener("click", () => scrollByCard(1));
     }
 
-    // Modal + Slider
+    // Modal elements
     const modal = document.getElementById("modal");
     const modalClose = document.getElementById("modalClose");
     const modalTag = document.getElementById("modalTag");
@@ -375,8 +406,8 @@
     const modalStack = document.getElementById("modalStack");
     const modalBuilt = document.getElementById("modalBuilt");
     const modalLearned = document.getElementById("modalLearned");
-    const modalRepo = document.getElementById("modalRepo");
 
+    // Slider
     const sliderTrack = document.getElementById("sliderTrack");
     const sliderDots = document.getElementById("sliderDots");
     const slidePrev = document.getElementById("slidePrev");
@@ -384,62 +415,53 @@
 
     let lastFocus = null;
     let slides = [];
-    let slideIndex = 0;
+    let currentIndex = 0;
 
-    function parseScreens(str) {
-      if (!str) return [];
-      return str.split(",").map(s => s.trim()).filter(Boolean);
-    }
-
-    function buildSlider(urls, title) {
-      slides = urls.length ? urls : [];
-      slideIndex = 0;
-
+    function renderSlider(images, title) {
       sliderTrack.innerHTML = "";
       sliderDots.innerHTML = "";
+      slides = images;
+      currentIndex = 0;
 
-      slides.forEach((src, i) => {
-        const slide = document.createElement("div");
-        slide.className = "slide";
+      images.forEach((src, i) => {
+        const s = document.createElement("div");
+        s.className = "slide";
         const img = document.createElement("img");
-        img.src = src;
-        img.alt = (title || "Project") + " image " + (i + 1);
-        slide.appendChild(img);
-        sliderTrack.appendChild(slide);
+        img.src = src.trim();
+        img.alt = (title || "Project") + " screen " + (i + 1);
+        s.appendChild(img);
+        sliderTrack.appendChild(s);
 
         const dot = document.createElement("button");
-        dot.type = "button";
-        dot.className = "dot-btn";
+        dot.className = "dot-btn" + (i === 0 ? " active" : "");
         dot.setAttribute("aria-label", "Go to image " + (i + 1));
-        dot.addEventListener("click", () => setSlide(i));
+        dot.addEventListener("click", () => goToSlide(i));
         sliderDots.appendChild(dot);
       });
 
-      setSlide(0);
+      updateSlider();
     }
 
-    function setSlide(i) {
-      if (!slides.length) return;
-      slideIndex = Math.max(0, Math.min(i, slides.length - 1));
-      sliderTrack.style.transform = "translateX(" + (-slideIndex * 100) + "%)";
+    function goToSlide(i) {
+      if (i < 0 || i >= slides.length) return;
+      currentIndex = i;
+      updateSlider();
+    }
 
+    function updateSlider() {
+      sliderTrack.style.transform = "translateX(" + (-currentIndex * 100) + "%)";
       const dots = sliderDots.querySelectorAll(".dot-btn");
-      dots.forEach((d, idx) => d.classList.toggle("active", idx === slideIndex));
+      dots.forEach((d, idx) => d.classList.toggle("active", idx === currentIndex));
 
-      const multi = slides.length > 1;
-      slidePrev.disabled = !multi;
-      slideNext.disabled = !multi;
+      slidePrev.disabled = (currentIndex === 0);
+      slideNext.disabled = (currentIndex === slides.length - 1);
     }
 
-    function prevSlide() { setSlide(slideIndex - 1); }
-    function nextSlide() { setSlide(slideIndex + 1); }
-
-    slidePrev.addEventListener("click", (e) => { e.preventDefault(); prevSlide(); });
-    slideNext.addEventListener("click", (e) => { e.preventDefault(); nextSlide(); });
+    slidePrev.addEventListener("click", () => goToSlide(currentIndex - 1));
+    slideNext.addEventListener("click", () => goToSlide(currentIndex + 1));
 
     function openModal(projectEl) {
       if (!projectEl) return;
-
       lastFocus = document.activeElement;
 
       const title = projectEl.dataset.title || "";
@@ -448,8 +470,7 @@
       const stack = projectEl.dataset.stack || "";
       const built = projectEl.dataset.built || "";
       const learned = projectEl.dataset.learned || "";
-      const repo = projectEl.dataset.repo || "#";
-      const screens = parseScreens(projectEl.dataset.screens);
+      const screens = (projectEl.dataset.screens || projectEl.dataset.thumb || "").split(",");
 
       modalTag.textContent = tag;
       modalTitle.textContent = title;
@@ -458,15 +479,7 @@
       modalBuilt.textContent = built;
       modalLearned.textContent = learned;
 
-      // Repo link: eğer hazır değilse coming-soon kalsın
-      modalRepo.href = repo || "#";
-      if (!repo || repo === "#") {
-        modalRepo.setAttribute("data-coming-soon", "true");
-      } else {
-        modalRepo.removeAttribute("data-coming-soon");
-      }
-
-      buildSlider(screens, title);
+      renderSlider(screens, title);
 
       modal.classList.add("show");
       modal.setAttribute("aria-hidden", "false");
@@ -481,50 +494,30 @@
       if (lastFocus) lastFocus.focus();
     }
 
-    // Click behavior:
-    // - Details link => modal
-    // - Card body (non-link) => modal
-    // - View repo => link (modal açma)
     document.addEventListener("click", (e) => {
-      // Details link
-      const details = e.target.closest(".open-modal");
-      if (details) {
+      const btn = e.target.closest(".open-modal");
+      if (btn) {
         e.preventDefault();
-        const project = details.closest(".project");
+        const project = btn.closest(".project");
         openModal(project);
         return;
       }
 
-      // Card click (but ignore actual links/buttons)
+      // open modal by clicking the card (except links)
       const card = e.target.closest(".project");
-      if (card) {
-        const isOnLink = !!e.target.closest("a");
-        const isOnButton = !!e.target.closest("button");
-        if (!isOnLink && !isOnButton) {
-          openModal(card);
-          return;
-        }
+      if (card && !e.target.closest("a")) {
+        openModal(card);
+        return;
       }
 
-      // Close via backdrop
+      // close via backdrop
       const closeHit = e.target.closest("[data-close='true']");
       if (closeHit) closeModal();
     });
 
     modalClose.addEventListener("click", closeModal);
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        toast.classList.remove("show");
-        if (modal.classList.contains("show")) closeModal();
-      }
-      if (!modal.classList.contains("show")) return;
-
-      if (e.key === "ArrowLeft") prevSlide();
-      if (e.key === "ArrowRight") nextSlide();
-    });
-
-    // Active nav link
+    // Active nav link (IntersectionObserver)
     const sections = document.querySelectorAll("main section[id], header#top");
     const navLinks = document.querySelectorAll(".nav-link");
 
@@ -533,7 +526,10 @@
     }
 
     const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+
       if (!visible) return;
       const id = visible.target.id;
       if (id && id !== "top") setActive(id);
@@ -562,6 +558,43 @@
       if (!c) return;
       const t = c.getAttribute("data-copy") || "";
       copyText(t);
+    });
+
+    // MOBILE DRAWER MENU
+    const menuBtn = document.getElementById("menuBtn");
+    const mnav = document.getElementById("mnav");
+
+    function openMnav() {
+      mnav.classList.add("show");
+      mnav.setAttribute("aria-hidden", "false");
+      menuBtn.setAttribute("aria-expanded", "true");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeMnav() {
+      mnav.classList.remove("show");
+      mnav.setAttribute("aria-hidden", "true");
+      menuBtn.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("no-scroll");
+    }
+
+    menuBtn.addEventListener("click", () => {
+      if (mnav.classList.contains("show")) closeMnav();
+      else openMnav();
+    });
+
+    mnav.addEventListener("click", (e) => {
+      if (e.target.closest("[data-mnav-close='true']")) closeMnav();
+      const link = e.target.closest(".mnav-link");
+      if (link) closeMnav();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        toast.classList.remove("show");
+        if (modal.classList.contains("show")) closeModal();
+        if (mnav.classList.contains("show")) closeMnav();
+      }
     });
   </script>
 
