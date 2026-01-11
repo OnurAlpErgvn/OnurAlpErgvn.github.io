@@ -107,17 +107,6 @@ body.no-scroll { overflow:hidden; }
   flex-direction:column;
   position:relative;
 }
-.watermark{
-  position:absolute;
-  right:4%;
-  bottom:10%;
-  font-weight:800;
-  letter-spacing:.06em;
-  font-size: clamp(64px, 10vw, 140px);
-  color: rgba(255,255,255,.05);
-  pointer-events:none;
-  user-select:none;
-}
 
 /* Nav */
 .nav{
