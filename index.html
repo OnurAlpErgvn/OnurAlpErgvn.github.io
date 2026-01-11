@@ -74,18 +74,16 @@
 
         <!-- MonkeyTyper -->
         <article class="card project"
-          data-project="monkeytyper"
           data-title="MonkeyTyper"
           data-tag="C++ · SFML"
-          data-thumb="assets/thumbs/monkeytyper.png"
           data-desc="Typing game with difficulty, timer, scoring and file-based high scores."
           data-stack="C++, SFML, OOP, File I/O"
           data-built="Difficulty system, timer & scoring, word spawner, file-based high scores, clean structure"
           data-learned="Game loop thinking, state management, input handling, clean separation of responsibilities"
-          data-screens="assets/thumbs/monkeytyper.png,assets/thumbs/monkeytyper.png,assets/thumbs/monkeytyper.png"
+          data-screens="assets/thumbs/monkeytyper.jpg.png,assets/thumbs/monkeytyper.jpg.png,assets/thumbs/monkeytyper.jpg.png"
         >
           <div class="thumb">
-            <img src="assets/thumbs/monkeytyper.png" alt="MonkeyTyper thumbnail">
+            <img src="assets/thumbs/monkeytyper.jpg.png" alt="MonkeyTyper thumbnail">
           </div>
           <div class="card-body">
             <div class="tag">C++ · SFML</div>
@@ -101,18 +99,16 @@
 
         <!-- Pacman -->
         <article class="card project"
-          data-project="pacman"
           data-title="Pacman"
           data-tag="Java · Swing"
-          data-thumb="assets/thumbs/pacman.png"
           data-desc="Swing-only Pacman with menu, board selection, upgrades, and thread-based animation."
           data-stack="Java, Swing, Threads, OOP"
           data-built="Modern menu, labyrinth & dots, upgrades, real-time score/life/timer, pause menu"
           data-learned="Thread-based animation, game states, UI structure, event handling"
-          data-screens="assets/thumbs/pacman.png,assets/thumbs/pacman.png,assets/thumbs/pacman.png"
+          data-screens="assets/thumbs/pacman.jpg.png,assets/thumbs/pacman.jpg.png,assets/thumbs/pacman.jpg.png"
         >
           <div class="thumb">
-            <img src="assets/thumbs/pacman.png" alt="Pacman thumbnail">
+            <img src="assets/thumbs/pacman.jpg.png" alt="Pacman thumbnail">
           </div>
           <div class="card-body">
             <div class="tag">Java · Swing</div>
@@ -128,18 +124,16 @@
 
         <!-- CarBorrowing -->
         <article class="card project"
-          data-project="carborrowing"
           data-title="CarBorrowing"
           data-tag="SQL · Database"
-          data-thumb="assets/thumbs/carborrowing.png"
           data-desc="Schema design & queries for a car borrowing system — constraints, reports, integrity."
           data-stack="SQL, Relational Design"
           data-built="Schema design, constraints, reports/queries, integrity rules"
           data-learned="Practical SQL modeling, thinking in relationships, constraints-first design"
-          data-screens="assets/thumbs/carborrowing.png,assets/thumbs/carborrowing.png,assets/thumbs/carborrowing.png"
+          data-screens="assets/thumbs/carborrowing.jpg.png,assets/thumbs/carborrowing.jpg.png,assets/thumbs/carborrowing.jpg.png"
         >
           <div class="thumb">
-            <img src="assets/thumbs/carborrowing.png" alt="CarBorrowing thumbnail">
+            <img src="assets/thumbs/carborrowing.jpg.png" alt="CarBorrowing thumbnail">
           </div>
           <div class="card-body">
             <div class="tag">SQL · Database</div>
@@ -280,22 +274,21 @@
 
   <!-- MODAL -->
   <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
 
     <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" id="modalClose" aria-label="Close">×</button>
 
       <div class="modal-hero">
-  <div class="modal-slider" id="slider">
-    <div class="slider-track" id="sliderTrack"></div>
+        <div class="modal-slider" id="slider">
+          <div class="slider-track" id="sliderTrack"></div>
 
-    <button class="slider-btn left" id="slidePrev" aria-label="Previous image">‹</button>
-    <button class="slider-btn right" id="slideNext" aria-label="Next image">›</button>
+          <button class="slider-btn left" id="slidePrev" aria-label="Previous image">‹</button>
+          <button class="slider-btn right" id="slideNext" aria-label="Next image">›</button>
 
-    <div class="slider-dots" id="sliderDots" aria-label="Image navigation"></div>
-  </div>
-</div>
-
+          <div class="slider-dots" id="sliderDots" aria-label="Image navigation"></div>
+        </div>
+      </div>
 
       <div class="modal-body">
         <div class="modal-top">
@@ -330,248 +323,230 @@
   </div>
 
   <script>
-  // Year
-  document.getElementById("y").textContent = new Date().getFullYear();
+    // Year
+    document.getElementById("y").textContent = new Date().getFullYear();
 
-  // Toast
-  const toast = document.getElementById("toast");
-  const toastTitle = document.getElementById("toastTitle");
-  const toastText = document.getElementById("toastText");
-  let toastTimer = null;
+    // Toast
+    const toast = document.getElementById("toast");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastText = document.getElementById("toastText");
+    let toastTimer = null;
 
-  function showToast(title, text) {
-    toastTitle.textContent = title || "Coming soon";
-    toastText.textContent = text || "This link will be available once the repo is ready.";
-    toast.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("show"), 2000);
-  }
+    function showToast(title, text) {
+      toastTitle.textContent = title || "Coming soon";
+      toastText.textContent = text || "This link will be available once the repo is ready.";
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2000);
+    }
 
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest('a[data-coming-soon="true"]');
-    if (!a) return;
-    e.preventDefault();
-    showToast("Coming soon", "This link will be available once the repo is ready.");
-  });
-
-  // Carousel arrows
-  const carousel = document.getElementById("carousel");
-  const prev = document.getElementById("prev");
-  const next = document.getElementById("next");
-
-  function scrollByCard(dir) {
-    const card = carousel.querySelector(".card");
-    const gap = 18;
-    const amount = (card ? card.getBoundingClientRect().width : 320) + gap;
-    carousel.scrollBy({ left: dir * amount, behavior: "smooth" });
-  }
-
-  if (prev && next && carousel) {
-    prev.addEventListener("click", () => scrollByCard(-1));
-    next.addEventListener("click", () => scrollByCard(1));
-  }
-
-  // Modal
-  const modal = document.getElementById("modal");
-  const modalClose = document.getElementById("modalClose");
-  const modalTag = document.getElementById("modalTag");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalDesc = document.getElementById("modalDesc");
-  const modalStack = document.getElementById("modalStack");
-  const modalBuilt = document.getElementById("modalBuilt");
-  const modalLearned = document.getElementById("modalLearned");
-
-  let lastFocus = null;
-
-  // ===== Slider state =====
-  const sliderTrack = document.getElementById("sliderTrack");
-  const sliderDots = document.getElementById("sliderDots");
-  const slidePrev = document.getElementById("slidePrev");
-  const slideNext = document.getElementById("slideNext");
-  const slider = document.getElementById("slider");
-
-  let slideIndex = 0;
-  let slideCount = 0;
-
-  function renderSlider(images, title) {
-    if (!sliderTrack || !sliderDots) return;
-
-    sliderTrack.innerHTML = "";
-    sliderDots.innerHTML = "";
-    slideIndex = 0;
-    slideCount = images.length;
-
-    images.forEach((src, i) => {
-      const s = document.createElement("div");
-      s.className = "slide";
-      s.innerHTML = `<img src="${src}" alt="${title} screen ${i + 1}">`;
-      sliderTrack.appendChild(s);
-
-      const d = document.createElement("button");
-      d.className = "dot-btn";
-      d.setAttribute("aria-label", `Go to image ${i + 1}`);
-      d.addEventListener("click", () => goToSlide(i));
-      sliderDots.appendChild(d);
-    });
-
-    goToSlide(0);
-  }
-
-  function goToSlide(i) {
-    slideIndex = Math.max(0, Math.min(i, slideCount - 1));
-    const x = -(slideIndex * 100);
-    sliderTrack.style.transform = `translateX(${x}%)`;
-
-    const dots = sliderDots.querySelectorAll(".dot-btn");
-    dots.forEach((d, idx) => d.classList.toggle("active", idx === slideIndex));
-
-    if (slidePrev) slidePrev.disabled = slideIndex === 0;
-    if (slideNext) slideNext.disabled = slideIndex === slideCount - 1;
-  }
-
-  function nextSlide() { goToSlide(slideIndex + 1); }
-  function prevSlide() { goToSlide(slideIndex - 1); }
-
-  if (slidePrev && slideNext) {
-    slidePrev.addEventListener("click", prevSlide);
-    slideNext.addEventListener("click", nextSlide);
-  }
-
-  // Swipe support
-  let touchStartX = null;
-
-  if (slider) {
-    slider.addEventListener("touchstart", (e) => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-
-    slider.addEventListener("touchend", (e) => {
-      if (touchStartX == null) return;
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      touchStartX = null;
-      if (Math.abs(dx) < 35) return;
-      if (dx < 0) nextSlide(); else prevSlide();
-    });
-  }
-
-  function openModal(projectEl) {
-    if (!projectEl) return;
-
-    lastFocus = document.activeElement;
-
-    const title = projectEl.dataset.title || "";
-    const tag = projectEl.dataset.tag || "";
-    const thumb = projectEl.dataset.thumb || "";
-    const desc = projectEl.dataset.desc || "";
-    const stack = projectEl.dataset.stack || "";
-    const built = projectEl.dataset.built || "";
-    const learned = projectEl.dataset.learned || "";
-
-    const screensRaw = projectEl.dataset.screens || thumb;
-    const screens = screensRaw.split(",").map(s => s.trim()).filter(Boolean);
-
-    modalTag.textContent = tag;
-    modalTitle.textContent = title;
-    modalDesc.textContent = desc;
-    modalStack.textContent = stack;
-    modalBuilt.textContent = built;
-    modalLearned.textContent = learned;
-
-    renderSlider(screens.length ? screens : [thumb], title);
-
-    modal.classList.add("show");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("no-scroll");
-
-    modalClose.focus();
-  }
-
-  function closeModal() {
-    modal.classList.remove("show");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("no-scroll");
-    if (lastFocus) lastFocus.focus();
-  }
-
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".open-modal");
-    if (btn) {
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest('a[data-coming-soon="true"]');
+      if (!a) return;
       e.preventDefault();
-      openModal(btn.closest(".project"));
-      return;
+      showToast("Coming soon", "This link will be available once the repo is ready.");
+    });
+
+    // Carousel arrows
+    const carousel = document.getElementById("carousel");
+    const prev = document.getElementById("prev");
+    const next = document.getElementById("next");
+
+    function scrollByCard(dir) {
+      const card = carousel.querySelector(".card");
+      const gap = 18;
+      const amount = (card ? card.getBoundingClientRect().width : 320) + gap;
+      carousel.scrollBy({ left: dir * amount, behavior: "smooth" });
     }
 
-    // click on card (optional)
-    const card = e.target.closest(".project");
-    if (card && !e.target.closest("a")) {
-      openModal(card);
-      return;
+    if (prev && next && carousel) {
+      prev.addEventListener("click", () => scrollByCard(-1));
+      next.addEventListener("click", () => scrollByCard(1));
     }
 
-    // close via backdrop
-    const closeHit = e.target.closest("[data-close='true']");
-    if (closeHit) closeModal();
+    // Modal + Slider
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modalClose");
+    const modalBackdrop = document.getElementById("modalBackdrop");
 
-    // copy buttons
-    const c = e.target.closest(".copy-btn");
-    if (c) {
-      const t = c.getAttribute("data-copy") || "";
-      copyText(t);
+    const modalTag = document.getElementById("modalTag");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalStack = document.getElementById("modalStack");
+    const modalBuilt = document.getElementById("modalBuilt");
+    const modalLearned = document.getElementById("modalLearned");
+
+    const sliderTrack = document.getElementById("sliderTrack");
+    const sliderDots = document.getElementById("sliderDots");
+    const slidePrev = document.getElementById("slidePrev");
+    const slideNext = document.getElementById("slideNext");
+
+    let lastFocus = null;
+    let slideIndex = 0;
+    let slideCount = 0;
+
+    function setSlide(i) {
+      if (!slideCount) return;
+      slideIndex = Math.max(0, Math.min(i, slideCount - 1));
+      sliderTrack.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+      // dots
+      [...sliderDots.querySelectorAll(".dot-btn")].forEach((b, idx) => {
+        b.classList.toggle("active", idx === slideIndex);
+      });
+
+      // disable buttons if only 1
+      const one = slideCount <= 1;
+      slidePrev.disabled = one || slideIndex === 0;
+      slideNext.disabled = one || slideIndex === slideCount - 1;
     }
-  });
 
-  modalClose.addEventListener("click", closeModal);
+    function buildSlider(images, titleText) {
+      sliderTrack.innerHTML = "";
+      sliderDots.innerHTML = "";
+      slideIndex = 0;
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      toast.classList.remove("show");
-      if (modal.classList.contains("show")) closeModal();
+      const list = images.filter(Boolean);
+      slideCount = list.length;
+
+      list.forEach((src, idx) => {
+        const slide = document.createElement("div");
+        slide.className = "slide";
+
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `${titleText} screenshot ${idx + 1}`;
+        img.loading = "lazy";
+
+        slide.appendChild(img);
+        sliderTrack.appendChild(slide);
+
+        const dot = document.createElement("button");
+        dot.className = "dot-btn";
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Go to image ${idx + 1}`);
+        dot.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setSlide(idx);
+        });
+        sliderDots.appendChild(dot);
+      });
+
+      setSlide(0);
     }
-    // Arrow keys to navigate slider when modal open
-    if (modal.classList.contains("show")) {
+
+    function openModal(projectEl) {
+      if (!projectEl) return;
+
+      lastFocus = document.activeElement;
+
+      const title = projectEl.dataset.title || "";
+      const tag = projectEl.dataset.tag || "";
+      const desc = projectEl.dataset.desc || "";
+      const stack = projectEl.dataset.stack || "";
+      const built = projectEl.dataset.built || "";
+      const learned = projectEl.dataset.learned || "";
+      const screens = (projectEl.dataset.screens || "").split(",");
+
+      modalTag.textContent = tag;
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modalStack.textContent = stack;
+      modalBuilt.textContent = built;
+      modalLearned.textContent = learned;
+
+      buildSlider(screens, title);
+
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+
+      modalClose.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+      if (lastFocus) lastFocus.focus();
+    }
+
+    function prevSlide() { setSlide(slideIndex - 1); }
+    function nextSlide() { setSlide(slideIndex + 1); }
+
+    slidePrev.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      prevSlide();
+    });
+
+    slideNext.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      nextSlide();
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", closeModal);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".open-modal");
+      if (btn) {
+        e.preventDefault();
+        const project = btn.closest(".project");
+        openModal(project);
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        toast.classList.remove("show");
+        if (modal.classList.contains("show")) closeModal();
+      }
+      if (!modal.classList.contains("show")) return;
+
       if (e.key === "ArrowLeft") prevSlide();
       if (e.key === "ArrowRight") nextSlide();
+    });
+
+    // Active nav link
+    const navLinks = document.querySelectorAll(".nav-link");
+    function setActive(id) {
+      navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
     }
-  });
 
-  // Active nav link (IntersectionObserver)
-  const sections = document.querySelectorAll("main section[id], header#top");
-  const navLinks = document.querySelectorAll(".nav-link");
+    const sectionEls = document.querySelectorAll("main section[id]");
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if (!visible) return;
+      setActive(visible.target.id);
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: [0.2, 0.35, 0.5] });
 
-  function setActive(id) {
-    navLinks.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
-  }
+    sectionEls.forEach(s => observer.observe(s));
 
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter(e => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!visible) return;
-    const id = visible.target.id;
-    if (id && id !== "top") setActive(id);
-  }, { rootMargin: "-40% 0px -55% 0px", threshold: [0.1,0.2,0.3,0.4,0.5] });
-
-  sections.forEach(s => {
-    if (s.id) observer.observe(s);
-  });
-
-  // Copy buttons
-  async function copyText(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-      showToast("Copied", text);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      ta.remove();
-      showToast("Copied", text);
+    // Copy buttons
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Copied", text);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        showToast("Copied", text);
+      }
     }
-  }
-</script>
 
+    document.addEventListener("click", (e) => {
+      const c = e.target.closest(".copy-btn");
+      if (!c) return;
+      const t = c.getAttribute("data-copy") || "";
+      copyText(t);
+    });
+  </script>
 </body>
 </html>
