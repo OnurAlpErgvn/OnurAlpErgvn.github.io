@@ -20,37 +20,83 @@ body{
 
 body.no-scroll { overflow:hidden; }
 
-/* Smoky background */
-.page-bg{
-  position:fixed;
+/* ============================
+   PREMIUM PARALLAX BACKGROUND
+   Place smoke image at: assets/smoke.png
+   ============================ */
+.bg-parallax{
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+  background: #060607;
+}
+
+/* base subtle lighting (premium) */
+.bg-parallax .bg-base{
+  position:absolute;
   inset:0;
-  z-index:-2;
   background:
     radial-gradient(1200px 600px at 55% 30%, rgba(255,255,255,.08), transparent 60%),
     radial-gradient(900px 700px at 20% 70%, rgba(255,255,255,.05), transparent 65%),
     radial-gradient(700px 700px at 85% 65%, rgba(255,255,255,.04), transparent 60%),
     linear-gradient(180deg, #060607, #070708 40%, #050506);
-  filter: contrast(1.05) saturate(.9);
+  filter: contrast(1.05) saturate(.92);
 }
-.page-bg::before{
-  content:"";
+
+/* smoke layers */
+.bg-parallax .layer{
   position:absolute;
-  inset:-40px;
-  background:
-    radial-gradient(900px 700px at 20% 30%, rgba(255,255,255,.05), transparent 60%),
-    radial-gradient(1200px 900px at 70% 70%, rgba(255,255,255,.06), transparent 65%),
-    radial-gradient(1400px 900px at 60% 45%, rgba(255,255,255,.04), transparent 70%);
-  filter: blur(14px);
-  opacity:.85;
+  inset:-14%;
+  background-image: url("assets/smoke.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.85;
+  transform: translate3d(0,0,0) scale(1.06);
+  will-change: transform;
 }
-.page-bg::after{
-  content:"";
+
+.bg-parallax .layer-1{
+  opacity: 0.62;
+  mix-blend-mode: screen;
+  filter: blur(0px);
+}
+.bg-parallax .layer-2{
+  opacity: 0.42;
+  filter: blur(0.6px);
+}
+.bg-parallax .layer-3{
+  opacity: 0.24;
+  filter: blur(1.2px);
+}
+
+/* grain = premium film noise */
+.bg-parallax .grain{
+  position:absolute;
+  inset:-20%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  transform: translate3d(0,0,0);
+  will-change: transform;
+}
+
+/* vignette for depth */
+.bg-parallax .vignette{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(1200px 900px at 50% 55%, rgba(0,0,0,.0), rgba(0,0,0,.55)),
-    radial-gradient(900px 700px at 50% 10%, rgba(0,0,0,.15), transparent 60%);
-  pointer-events:none;
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 42%, rgba(0,0,0,.55) 100%),
+    radial-gradient(900px 700px at 50% 10%, rgba(0,0,0,.18), transparent 60%);
+  opacity: .95;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .bg-parallax .layer,
+  .bg-parallax .grain{ transform:none !important; }
 }
 
 /* Hero */
