@@ -18,18 +18,33 @@
     <nav class="nav">
       <a class="brand" href="#top">OnurAlpErgvn</a>
 
-      <div class="nav-links" id="desktopNav">
+      <div class="nav-links">
         <a class="nav-link" href="#projects">Projects</a>
         <a class="nav-link" href="#pjatk">PJATK</a>
         <a class="nav-link" href="#acun">AcunMedyaAkademi</a>
         <a class="nav-link" href="#contact">Contact</a>
       </div>
 
-      <!-- Mobile menu button -->
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
-        <span class="menu-icon" aria-hidden="true">☰</span>
-      </button>
+      <!-- Mobile button -->
+      <button class="mnav-btn" id="mnavBtn" aria-label="Open menu" aria-expanded="false">☰</button>
     </nav>
+
+    <!-- Mobile drawer -->
+    <div class="mnav" id="mnav" aria-hidden="true">
+      <div class="mnav-backdrop" id="mnavBackdrop"></div>
+
+      <div class="mnav-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+        <div class="mnav-top">
+          <span class="mnav-title">Menu</span>
+          <button class="mnav-close" id="mnavClose" aria-label="Close menu">×</button>
+        </div>
+
+        <a class="mnav-link" href="#projects">Projects</a>
+        <a class="mnav-link" href="#pjatk">PJATK</a>
+        <a class="mnav-link" href="#acun">AcunMedyaAkademi</a>
+        <a class="mnav-link" href="#contact">Contact</a>
+      </div>
+    </div>
 
     <div class="hero-inner">
       <h1>Always curious,<br/>always learning.</h1>
@@ -79,10 +94,10 @@
 
         <!-- MonkeyTyper -->
         <article class="card project"
-          data-project="monkeytyper"
+          role="button"
+          tabindex="0"
           data-title="MonkeyTyper"
           data-tag="C++ · SFML"
-          data-thumb="assets/thumbs/monkeytyper.png"
           data-desc="Typing game with difficulty, timer, scoring and file-based high scores."
           data-stack="C++, SFML, OOP, File I/O"
           data-built="Difficulty system, timer & scoring, word spawner, file-based high scores, clean structure"
@@ -106,10 +121,10 @@
 
         <!-- Pacman -->
         <article class="card project"
-          data-project="pacman"
+          role="button"
+          tabindex="0"
           data-title="Pacman"
           data-tag="Java · Swing"
-          data-thumb="assets/thumbs/pacman.png"
           data-desc="Swing-only Pacman with menu, board selection, upgrades, and thread-based animation."
           data-stack="Java, Swing, Threads, OOP"
           data-built="Modern menu, labyrinth & dots, upgrades, real-time score/life/timer, pause menu"
@@ -133,10 +148,10 @@
 
         <!-- CarBorrowing -->
         <article class="card project"
-          data-project="carborrowing"
+          role="button"
+          tabindex="0"
           data-title="CarBorrowing"
           data-tag="SQL · Database"
-          data-thumb="assets/thumbs/carborrowing.png"
           data-desc="Schema design & queries for a car borrowing system — constraints, reports, integrity."
           data-stack="SQL, Relational Design"
           data-built="Schema design, constraints, reports/queries, integrity rules"
@@ -260,7 +275,9 @@
         <div class="contact-row">
           <span class="label">LinkedIn</span>
           <div class="contact-right">
-            <a href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">linkedin.com/in/onur-alp-ergüven</a>
+            <a href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">
+              linkedin.com/in/onur-alp-ergüven
+            </a>
             <button class="copy-btn" data-copy="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" aria-label="Copy LinkedIn link">Copy</button>
           </div>
         </div>
@@ -280,29 +297,6 @@
     <div class="toast-inner">
       <div class="toast-title" id="toastTitle">Coming soon</div>
       <div class="toast-text" id="toastText">This link will be available once the repo is ready.</div>
-    </div>
-  </div>
-
-  <!-- MOBILE NAV (Drawer) -->
-  <div class="mnav" id="mnav" aria-hidden="true">
-    <div class="mnav-backdrop" data-mnav-close="true"></div>
-    <div class="mnav-panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
-      <div class="mnav-top">
-        <div class="mnav-brand">OnurAlpErgvn</div>
-        <button class="mnav-close" data-mnav-close="true" aria-label="Close menu">×</button>
-      </div>
-
-      <div class="mnav-links">
-        <a href="#projects" class="mnav-link">Projects</a>
-        <a href="#pjatk" class="mnav-link">PJATK</a>
-        <a href="#acun" class="mnav-link">AcunMedyaAkademi</a>
-        <a href="#contact" class="mnav-link">Contact</a>
-      </div>
-
-      <div class="mnav-cta">
-        <a class="btn" href="https://github.com/OnurAlpErgvn" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/onur-alp-erg%C3%BCven-405b12336" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
     </div>
   </div>
 
@@ -392,12 +386,10 @@
       const amount = (card ? card.getBoundingClientRect().width : 320) + gap;
       carousel.scrollBy({ left: dir * amount, behavior: "smooth" });
     }
-    if (prev && next && carousel) {
-      prev.addEventListener("click", () => scrollByCard(-1));
-      next.addEventListener("click", () => scrollByCard(1));
-    }
+    prev?.addEventListener("click", () => scrollByCard(-1));
+    next?.addEventListener("click", () => scrollByCard(1));
 
-    // Modal elements
+    // Modal + slider
     const modal = document.getElementById("modal");
     const modalClose = document.getElementById("modalClose");
     const modalTag = document.getElementById("modalTag");
@@ -407,7 +399,6 @@
     const modalBuilt = document.getElementById("modalBuilt");
     const modalLearned = document.getElementById("modalLearned");
 
-    // Slider
     const sliderTrack = document.getElementById("sliderTrack");
     const sliderDots = document.getElementById("sliderDots");
     const slidePrev = document.getElementById("slidePrev");
@@ -415,53 +406,56 @@
 
     let lastFocus = null;
     let slides = [];
-    let currentIndex = 0;
+    let idx = 0;
 
-    function renderSlider(images, title) {
+    function renderSlider(list) {
+      slides = list;
+      idx = 0;
+
       sliderTrack.innerHTML = "";
       sliderDots.innerHTML = "";
-      slides = images;
-      currentIndex = 0;
 
-      images.forEach((src, i) => {
+      slides.forEach((src, i) => {
         const s = document.createElement("div");
         s.className = "slide";
         const img = document.createElement("img");
-        img.src = src.trim();
-        img.alt = (title || "Project") + " screen " + (i + 1);
+        img.src = src;
+        img.alt = "Project image " + (i + 1);
         s.appendChild(img);
         sliderTrack.appendChild(s);
 
         const dot = document.createElement("button");
         dot.className = "dot-btn" + (i === 0 ? " active" : "");
         dot.setAttribute("aria-label", "Go to image " + (i + 1));
-        dot.addEventListener("click", () => goToSlide(i));
+        dot.addEventListener("click", () => goTo(i));
         sliderDots.appendChild(dot);
       });
 
       updateSlider();
     }
 
-    function goToSlide(i) {
-      if (i < 0 || i >= slides.length) return;
-      currentIndex = i;
+    function goTo(i) {
+      idx = Math.max(0, Math.min(i, slides.length - 1));
       updateSlider();
     }
 
     function updateSlider() {
-      sliderTrack.style.transform = "translateX(" + (-currentIndex * 100) + "%)";
-      const dots = sliderDots.querySelectorAll(".dot-btn");
-      dots.forEach((d, idx) => d.classList.toggle("active", idx === currentIndex));
+      sliderTrack.style.transform = `translateX(-${idx * 100}%)`;
 
-      slidePrev.disabled = (currentIndex === 0);
-      slideNext.disabled = (currentIndex === slides.length - 1);
+      [...sliderDots.children].forEach((d, i) => {
+        d.classList.toggle("active", i === idx);
+      });
+
+      slidePrev.disabled = idx === 0;
+      slideNext.disabled = idx === slides.length - 1;
     }
 
-    slidePrev.addEventListener("click", () => goToSlide(currentIndex - 1));
-    slideNext.addEventListener("click", () => goToSlide(currentIndex + 1));
+    slidePrev.addEventListener("click", () => goTo(idx - 1));
+    slideNext.addEventListener("click", () => goTo(idx + 1));
 
     function openModal(projectEl) {
       if (!projectEl) return;
+
       lastFocus = document.activeElement;
 
       const title = projectEl.dataset.title || "";
@@ -470,7 +464,7 @@
       const stack = projectEl.dataset.stack || "";
       const built = projectEl.dataset.built || "";
       const learned = projectEl.dataset.learned || "";
-      const screens = (projectEl.dataset.screens || projectEl.dataset.thumb || "").split(",");
+      const screens = (projectEl.dataset.screens || "").split(",").map(s => s.trim()).filter(Boolean);
 
       modalTag.textContent = tag;
       modalTitle.textContent = title;
@@ -479,7 +473,7 @@
       modalBuilt.textContent = built;
       modalLearned.textContent = learned;
 
-      renderSlider(screens, title);
+      renderSlider(screens.length ? screens : ["assets/thumbs/monkeytyper.png"]);
 
       modal.classList.add("show");
       modal.setAttribute("aria-hidden", "false");
@@ -494,31 +488,45 @@
       if (lastFocus) lastFocus.focus();
     }
 
+    // Open modal: card click OR Details click
     document.addEventListener("click", (e) => {
-      const btn = e.target.closest(".open-modal");
-      if (btn) {
+      const details = e.target.closest(".open-modal");
+      if (details) {
         e.preventDefault();
-        const project = btn.closest(".project");
+        const project = details.closest(".project");
         openModal(project);
         return;
       }
 
-      // open modal by clicking the card (except links)
       const card = e.target.closest(".project");
-      if (card && !e.target.closest("a")) {
+      if (card) {
+        // if clicked on a normal link inside card (View repo etc), don't hijack
+        if (e.target.closest("a")) return;
         openModal(card);
-        return;
       }
 
-      // close via backdrop
-      const closeHit = e.target.closest("[data-close='true']");
-      if (closeHit) closeModal();
+      if (e.target.closest("[data-close='true']")) closeModal();
+    });
+
+    // Keyboard open (Enter/Space on focused card)
+    document.addEventListener("keydown", (e) => {
+      const focusedCard = document.activeElement?.classList?.contains("project") ? document.activeElement : null;
+      if (focusedCard && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        openModal(focusedCard);
+      }
+
+      if (e.key === "Escape") {
+        toast.classList.remove("show");
+        if (modal.classList.contains("show")) closeModal();
+        closeMnav();
+      }
     });
 
     modalClose.addEventListener("click", closeModal);
 
-    // Active nav link (IntersectionObserver)
-    const sections = document.querySelectorAll("main section[id], header#top");
+    // Active nav link
+    const sections = document.querySelectorAll("main section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
 
     function setActive(id) {
@@ -526,16 +534,13 @@
     }
 
     const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-
+      const visible = entries.filter(e => e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
       if (!visible) return;
       const id = visible.target.id;
-      if (id && id !== "top") setActive(id);
+      if (id) setActive(id);
     }, { rootMargin: "-40% 0px -55% 0px", threshold: [0.1,0.2,0.3,0.4,0.5] });
 
-    sections.forEach(s => { if (s.id) observer.observe(s); });
+    sections.forEach(s => observer.observe(s));
 
     // Copy buttons
     async function copyText(text) {
@@ -560,41 +565,41 @@
       copyText(t);
     });
 
-    // MOBILE DRAWER MENU
-    const menuBtn = document.getElementById("menuBtn");
+    // ===== Mobile drawer nav (works only on mobile; desktop never locks) =====
     const mnav = document.getElementById("mnav");
+    const mnavBtn = document.getElementById("mnavBtn");
+    const mnavClose = document.getElementById("mnavClose");
+    const mnavBackdrop = document.getElementById("mnavBackdrop");
 
-    function openMnav() {
-      mnav.classList.add("show");
+    function isMobile() { return window.innerWidth <= 860; }
+
+    function openMnav(){
+      if(!isMobile()) return;             // desktop: do nothing
+      mnav.classList.add("open");
       mnav.setAttribute("aria-hidden", "false");
-      menuBtn.setAttribute("aria-expanded", "true");
+      mnavBtn.setAttribute("aria-expanded", "true");
       document.body.classList.add("no-scroll");
     }
 
-    function closeMnav() {
-      mnav.classList.remove("show");
+    function closeMnav(){
+      mnav.classList.remove("open");
       mnav.setAttribute("aria-hidden", "true");
-      menuBtn.setAttribute("aria-expanded", "false");
+      mnavBtn.setAttribute("aria-expanded", "false");
       document.body.classList.remove("no-scroll");
     }
 
-    menuBtn.addEventListener("click", () => {
-      if (mnav.classList.contains("show")) closeMnav();
-      else openMnav();
+    mnavBtn?.addEventListener("click", openMnav);
+    mnavClose?.addEventListener("click", closeMnav);
+    mnavBackdrop?.addEventListener("click", closeMnav);
+
+    // close after clicking a menu link
+    document.querySelectorAll(".mnav-link").forEach(a => {
+      a.addEventListener("click", () => closeMnav());
     });
 
-    mnav.addEventListener("click", (e) => {
-      if (e.target.closest("[data-mnav-close='true']")) closeMnav();
-      const link = e.target.closest(".mnav-link");
-      if (link) closeMnav();
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        toast.classList.remove("show");
-        if (modal.classList.contains("show")) closeModal();
-        if (mnav.classList.contains("show")) closeMnav();
-      }
+    // resize safety: if desktop -> ensure unlocked
+    window.addEventListener("resize", () => {
+      if (!isMobile()) closeMnav();
     });
   </script>
 
