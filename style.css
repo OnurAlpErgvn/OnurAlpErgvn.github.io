@@ -17,7 +17,6 @@ body{
   line-height:1.6;
   overflow-x:hidden;
 }
-
 body.no-scroll { overflow:hidden; }
 
 /* Smoky background */
@@ -317,7 +316,6 @@ body.no-scroll { overflow:hidden; }
   min-width: 320px;
   max-width: 360px;
   scroll-snap-align:start;
-  cursor:pointer;
   transition: transform .18s ease, border-color .18s ease, background .18s ease;
 }
 .carousel .card:hover{
@@ -469,6 +467,7 @@ body.no-scroll { overflow:hidden; }
   cursor:pointer;
   font-size:24px;
   line-height:0;
+  z-index:50;
 }
 .modal-close:hover{ background: rgba(255,255,255,.10); }
 
@@ -477,18 +476,14 @@ body.no-scroll { overflow:hidden; }
   position:relative;
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
-.modal-hero img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  filter: grayscale(1) contrast(1.06) brightness(.92);
-}
+
+/* IMPORTANT: overlay should NOT steal clicks */
 .modal-hero::after{
   content:"";
   position:absolute;
   inset:0;
   background: linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.65));
+  pointer-events:none;
 }
 
 .modal-body{
@@ -538,21 +533,6 @@ body.no-scroll { overflow:hidden; }
   flex-wrap:wrap;
 }
 
-/* Responsive */
-@media (max-width: 860px){
-  .nav-links{ display:none; }
-  .grid.two{ grid-template-columns: 1fr; }
-  .section-head{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-  .modal-grid{ grid-template-columns: 1fr; }
-  .modal-panel{ margin: 3vh 14px; }
-}
-
-@media (max-width: 420px){
-  .carousel .card{ min-width: 86vw; }
-}
 /* ===== Modal Slider ===== */
 .modal-slider{
   position: relative;
@@ -596,6 +576,8 @@ body.no-scroll { overflow:hidden; }
   display:flex;
   align-items:center;
   justify-content:center;
+  z-index:30;
+  pointer-events:auto;
 }
 .slider-btn:hover{ background: rgba(0,0,0,.48); }
 .slider-btn:disabled{
@@ -618,6 +600,8 @@ body.no-scroll { overflow:hidden; }
   background: rgba(0,0,0,.25);
   border: 1px solid rgba(255,255,255,.10);
   backdrop-filter: blur(8px);
+  z-index:30;
+  pointer-events:auto;
 }
 .dot-btn{
   width:8px;
@@ -629,4 +613,20 @@ body.no-scroll { overflow:hidden; }
 }
 .dot-btn.active{
   background: rgba(255,255,255,.78);
+}
+
+/* Responsive */
+@media (max-width: 860px){
+  .nav-links{ display:none; }
+  .grid.two{ grid-template-columns: 1fr; }
+  .section-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .modal-grid{ grid-template-columns: 1fr; }
+  .modal-panel{ margin: 3vh 14px; }
+}
+
+@media (max-width: 420px){
+  .carousel .card{ min-width: 86vw; }
 }
