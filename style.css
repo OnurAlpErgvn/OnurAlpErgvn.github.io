@@ -107,6 +107,57 @@ body.no-scroll { overflow:hidden; }
   flex-direction:column;
   position:relative;
 }
+/* ============================
+   HERO BIG NAME (background)
+   ============================ */
+.hero-name-bg{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.hero-name-bg span{
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.055);
+  line-height: .9;
+  white-space: nowrap;
+}
+
+/* İki satırın boyutları */
+.hero-name-bg .line1{
+  font-size: clamp(72px, 11vw, 170px);
+}
+
+.hero-name-bg .line2{
+  font-size: clamp(78px, 12vw, 190px);
+}
+
+/* Hero içeriği üstte kalsın */
+.hero-inner{
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobil ayar */
+@media (max-width: 860px){
+  .hero-name-bg{
+    gap: 14px;
+  }
+  .hero-name-bg span{
+    color: rgba(255,255,255,0.04);
+    letter-spacing: .06em;
+  }
+}
+
 
 /* ---- hero subtitle split ---- */
 .subtitle{
