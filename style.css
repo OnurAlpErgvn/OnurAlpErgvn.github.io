@@ -110,53 +110,72 @@ body.no-scroll { overflow:hidden; }
 /* ============================
    HERO BIG NAME (background)
    ============================ */
+.hero{
+  position: relative; /* yoksa ekle */
+  overflow: hidden;
+}
+
 .hero-name-bg{
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2vw;
   pointer-events: none;
   user-select: none;
-  z-index: 0;
+  z-index: 1;
 }
 
+/* Genel stil */
 .hero-name-bg span{
+  position: absolute;
   font-weight: 800;
-  letter-spacing: .08em;
+  letter-spacing: .10em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.055);
   line-height: .9;
   white-space: nowrap;
+  color: rgba(255,255,255,0.038); /* premium soluk */
+  transform: translate3d(0,0,0);
 }
 
-/* İki satırın boyutları */
+/* ONUR ALP — solda/alt bölgede */
 .hero-name-bg .line1{
-  font-size: clamp(72px, 11vw, 170px);
+  left: 10%;
+  bottom: 26%;
+  font-size: clamp(64px, 9.5vw, 160px);
 }
 
+/* ERGÜVEN — sağa yakın/alt bölgede */
 .hero-name-bg .line2{
-  font-size: clamp(78px, 12vw, 190px);
+  right: 6%;
+  bottom: 14%;
+  font-size: clamp(70px, 10.5vw, 180px);
+  opacity: .85;
 }
 
-/* Hero içeriği üstte kalsın */
+/* İçerik (başlık vs) her zaman üstte ve DÜZ kalır */
+.nav,
+.mnav,
 .hero-inner{
   position: relative;
   z-index: 2;
 }
 
-/* Mobil ayar */
+/* Mobilde daha temiz: biraz küçült + daha silik */
 @media (max-width: 860px){
-  .hero-name-bg{
-    gap: 14px;
+  .hero-name-bg .line1{
+    left: 6%;
+    bottom: 30%;
+    font-size: clamp(44px, 12vw, 92px);
+  }
+  .hero-name-bg .line2{
+    right: 4%;
+    bottom: 18%;
+    font-size: clamp(46px, 13vw, 98px);
   }
   .hero-name-bg span{
-    color: rgba(255,255,255,0.04);
-    letter-spacing: .06em;
+    color: rgba(255,255,255,0.028);
+    letter-spacing: .08em;
   }
 }
+
 
 
 /* ---- hero subtitle split ---- */
